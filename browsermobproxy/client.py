@@ -1,5 +1,5 @@
 import requests
-from urllib import urlencode
+from urllib import urlencode,unquote
 import json
 
 
@@ -14,7 +14,7 @@ class Client(object):
         """
         self.host = "http://" + url
         if params:
-            urlparams = "?" + urlencode(params)
+            urlparams = "?" + unquote(urlencode(params))
         else:
             urlparams = ""
         resp = requests.post('%s/proxy' % self.host + urlparams)
